@@ -3,11 +3,12 @@ import { Bell, Search } from 'lucide-react';
 export default function Navbar() {
   return (
     <header className="flex h-20 items-center justify-between border-b border-gray-200 bg-white px-6">
-      <div>
-        <h2 className="text-xl font-semibold text-gray-900">
-          Project Dashboard
+      <div className="min-w-0 lg:ml-0 ml-12">
+        <h2 className="truncate text-lg font-semibold text-gray-900 sm:text-xl">
+          Dashboard
         </h2>
-        <p className="text-sm text-gray-500">
+
+        <p className="mt-1 text-xs text-gray-500 sm:text-sm">
           Manage boards, tasks, and team collaboration.
         </p>
       </div>
