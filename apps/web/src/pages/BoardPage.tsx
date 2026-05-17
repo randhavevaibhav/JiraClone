@@ -48,12 +48,14 @@ const columns = [
 
 export default function BoardPage() {
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="lg:space-y-6 space-y-5">
+      <div className="flex lg:flex-row flex-col items-center lg:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Sprint Board</h1>
+          <h1 className="text-3xl font-bold text-(--text-primary)">
+            Sprint Board
+          </h1>
 
-          <p className="mt-2 text-gray-500">
+          <p className="mt-2 text-(--text-secondary)">
             Manage tasks and track sprint progress.
           </p>
         </div>
@@ -63,15 +65,15 @@ export default function BoardPage() {
         </button>
       </div>
 
-      <div className="grid gap-6 xl:grid-cols-4">
+      <div className="grid lg:gap-6 gap-4 xl:grid-cols-4">
         {columns.map((column) => (
-          <div key={column.title} className="rounded-3xl bg-gray-100 p-4">
+          <div key={column.title} className="rounded-3xl bg-(--card-bg) p-4">
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-900">
+              <h2 className="text-lg font-semibold text-(--text-primary)">
                 {column.title}
               </h2>
 
-              <span className="rounded-full bg-white px-3 py-1 text-sm font-medium text-gray-600">
+              <span className="rounded-full bg-(--bg-secondary) px-3 py-1 text-sm font-medium text-(--text-secondary)">
                 {column.tasks.length}
               </span>
             </div>
@@ -80,12 +82,14 @@ export default function BoardPage() {
               {column.tasks.map((task) => (
                 <div
                   key={task.id}
-                  className="cursor-pointer rounded-2xl bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                  className="cursor-pointer rounded-2xl bg-(--bg-secondary) p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-medium text-gray-900">{task.title}</h3>
+                    <h3 className="font-medium text-(--text-primary)">
+                      {task.title}
+                    </h3>
 
-                    <span className="rounded-full bg-blue-100 px-2 py-1 text-xs font-semibold text-blue-700">
+                    <span className="rounded-full bg-(--card-bg) px-2 py-1 text-xs font-semibold text-(--text-action)">
                       {task.priority}
                     </span>
                   </div>
@@ -101,7 +105,9 @@ export default function BoardPage() {
                       </div>
                     </div>
 
-                    <p className="text-xs text-gray-500">2 days left</p>
+                    <p className="text-xs text-(--text-secondary)">
+                      2 days left
+                    </p>
                   </div>
                 </div>
               ))}

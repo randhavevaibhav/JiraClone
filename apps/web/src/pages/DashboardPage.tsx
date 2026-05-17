@@ -21,18 +21,23 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-        <p className="mt-2 text-gray-500">
+        <h1 className="text-3xl font-bold text-(--text-primary)">Dashboard</h1>
+        <p className="mt-2 text-(--text-secondary)">
           Overview of sprint activity and team performance.
         </p>
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
         {stats.map((stat) => (
-          <div key={stat.title} className="rounded-3xl bg-white p-6 shadow-sm">
-            <p className="text-sm font-medium text-gray-500">{stat.title}</p>
+          <div
+            key={stat.title}
+            className="rounded-3xl bg-(--card-bg) p-6 shadow-sm"
+          >
+            <p className="text-sm font-medium text-(--text-secondary)">
+              {stat.title}
+            </p>
 
-            <h2 className="mt-4 text-4xl font-bold text-gray-900">
+            <h2 className="mt-4 text-4xl font-bold text-(--text-primary)">
               {stat.value}
             </h2>
           </div>
@@ -40,9 +45,9 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid gap-6 xl:grid-cols-3">
-        <div className="rounded-3xl bg-white p-6 shadow-sm xl:col-span-2">
+        <div className="rounded-3xl bg-(--card-bg) p-6 shadow-sm xl:col-span-2">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-(--text-primary)">
               Sprint Progress
             </h3>
 
