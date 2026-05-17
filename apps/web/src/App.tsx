@@ -1,13 +1,19 @@
-import './App.css'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import DashboardLayout from './layouts/DashboardLayout';
+import DashboardPage from './pages/DashboardPage';
+import BoardPage from './pages/BoardPage';
 
-function App() {
-
-
+export default function App() {
   return (
-    <>
- <div className='text-red-500'>Hello</div>
-    </>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        <Route element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/board/:id" element={<BoardPage />} />
+        </Route>
 
-export default App
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
