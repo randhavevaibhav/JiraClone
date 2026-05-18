@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   LayoutDashboard,
   FolderKanban,
@@ -19,7 +19,7 @@ const navItems = [
   {
     label: 'Boards',
     icon: FolderKanban,
-    path: getBoardPagePath("1"),
+    path: getBoardPagePath('1'),
   },
   {
     label: 'Favorites',
@@ -35,6 +35,14 @@ const navItems = [
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+  }, [isOpen]);
 
   return (
     <>
