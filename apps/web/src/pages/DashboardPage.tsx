@@ -27,17 +27,17 @@ export default function DashboardPage() {
         </p>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-6 grid-cols-2 md:grid-cols-4">
         {stats.map((stat) => (
           <div
             key={stat.title}
-            className="rounded-3xl bg-(--card-bg) p-6 shadow-sm"
+            className="rounded-3xl bg-(--card-bg) lg:p-6 p-5 shadow-sm"
           >
             <p className="text-sm font-medium text-(--text-secondary)">
               {stat.title}
             </p>
 
-            <h2 className="mt-4 text-4xl font-bold text-(--text-primary)">
+            <h2 className="mt-4 lg:text-4xl text-3xl font-bold text-(--text-primary)">
               {stat.value}
             </h2>
           </div>

@@ -8,17 +8,18 @@ import {
   X,
 } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
+import { getBoardPagePath, getDashboardPagePath } from '@/utils/getPagePaths';
 
 const navItems = [
   {
     label: 'Dashboard',
     icon: LayoutDashboard,
-    path: '/dashboard',
+    path: getDashboardPagePath(),
   },
   {
     label: 'Boards',
     icon: FolderKanban,
-    path: '/board/1',
+    path: getBoardPagePath("1"),
   },
   {
     label: 'Favorites',
@@ -38,7 +39,7 @@ export default function Sidebar() {
   return (
     <>
       {/* Mobile Topbar */}
-      <div className="flex h-20 items-center justify-between border-b border-gray-200 bg-(--bg-secondary) px-2 lg:hidden absolute">
+      <div className="flex h-20 items-center justify-between border-b border-(--border-color) bg-(--bg-secondary) px-2 lg:hidden absolute">
         <button
           onClick={() => setIsOpen(true)}
           className="cursor-pointer rounded-lg p-2 hover:bg-(--card-bg)"
@@ -79,7 +80,7 @@ export default function Sidebar() {
           {/* Mobile Close Button */}
           <button
             onClick={() => setIsOpen(false)}
-            className="cursor-pointer rounded-lg p-2 transition hover:bg-gray-100 lg:hidden"
+            className="cursor-pointer rounded-lg p-2 hover:bg-(--card-bg) lg:hidden"
             aria-label="Close sidebar"
           >
             <X size={22} />

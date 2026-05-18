@@ -49,7 +49,7 @@ const columns = [
 export default function BoardPage() {
   return (
     <div className="lg:space-y-6 space-y-5">
-      <div className="flex lg:flex-row flex-col items-center lg:justify-between gap-4">
+      <div className="flex md:flex-row flex-col md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-(--text-primary)">
             Sprint Board
@@ -60,7 +60,7 @@ export default function BoardPage() {
           </p>
         </div>
 
-        <button className="rounded-2xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700">
+        <button className="rounded-2xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 md:self-auto  self-start">
           + Create Task
         </button>
       </div>
