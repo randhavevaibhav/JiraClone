@@ -13,16 +13,16 @@ export default function NotFound() {
 
       {/* Main Wrapper */}
       <div className="relative z-10 flex min-h-screen items-center justify-center px-4 py-6 sm:px-6 sm:py-10">
-        <div className="w-full max-w-5xl rounded-3xl border border-(--border-color) bg-(--bg-secondary) p-4 shadow-2xl backdrop-blur-md sm:p-6 lg:p-10">
+        <div className="w-full max-w-5xl rounded-3xl border border-(--border-color) bg-(--bg-secondary) p-4 shadow-2xl backdrop-blur-md sm:p-6 lg:p-8">
           {/* Badge */}
           <div className="mb-4 flex justify-center">
-            <span className="rounded-full border border-rose-500/20 bg-rose-500/10 px-3 py-1 text-[10px] font-bold tracking-wider text-rose-500 sm:text-xs">
+            <span className="rounded-md border border-rose-500/20 bg-rose-500/10 px-3 py-3 text-[10px] font-bold tracking-wider text-rose-500 sm:text-xs">
               ERROR CODE 404
             </span>
           </div>
 
           {/* Responsive Layout */}
-          <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-12">
+          <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-center lg:gap-12">
             {/* GIF Section */}
             <div className="w-full flex-1">
               <div className="group overflow-hidden rounded-2xl border border-(--border-color)/60 bg-(--card-bg) p-2 transition-transform duration-300 hover:scale-[1.01]">
