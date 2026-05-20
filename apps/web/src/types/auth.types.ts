@@ -1,5 +1,3 @@
-//auth types
-
 export type User = {
   id: string;
   name: string;
@@ -24,12 +22,4 @@ export interface AuthContextType {
   // Change return type here to match what your component might need, or keep it returning User
   login: (credentials: LoginCredentials) => Promise<LoginResponse>;
   logout: () => Promise<void>;
-}
-
-
-//Theme Types
-export type Theme = 'light' | 'dark';
-export type ThemeContextType = {
-  toggleTheme:()=>void;
-  theme:Theme;
 }
