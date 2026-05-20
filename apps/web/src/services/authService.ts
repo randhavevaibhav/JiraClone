@@ -1,4 +1,4 @@
-import type{User} from "@/types/types"
+import type{User} from "@/types/auth.types"
 
 const MOCK_USER:User = {
   id: "usr_01J",
