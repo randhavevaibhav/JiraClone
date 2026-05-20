@@ -11,6 +11,7 @@ import LoginPage from '@/pages/LogInPage';
 import UnAuthLayout from '@/layouts/UnAuthLayout';
 import { getDashboardPagePath } from '@/utils/getPagePaths';
 import NotFound from '@/pages/NotFound';
+import SignUpPage from '@/pages/SignupPage';
 
 const router = createBrowserRouter([
   // Public Route
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <LoginPage />,
+      },
+      {
+        path: '/signup',
+        element: <SignUpPage />,
       },
     ],
   },

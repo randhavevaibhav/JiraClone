@@ -9,7 +9,7 @@ import { Eye, EyeOff } from 'lucide-react';
 type FormFieldProps = {
   label: string;
   name: string;
-  type: 'number' | 'checkbox' | 'text' | 'password';
+  type: 'number' | 'checkbox' | 'text' | 'password'| 'email';
   isRequired?: boolean;
   placeholder?:string;
 };
@@ -55,7 +55,7 @@ export const FormField = ({
 
       {isPassword && (
         <div
-          className="absolute top-9 right-2.5 cursor-pointer"
+          className="absolute top-10.5 right-2.5 cursor-pointer"
           onClick={() => setShowPass(!showPass)}
         >
           {showPass ? <Eye /> : <EyeOff />}

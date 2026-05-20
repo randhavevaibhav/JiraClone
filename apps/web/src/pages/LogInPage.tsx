@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAuth } from '@/hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   logInFormSchema,
   type LogInFormFormData,
 } from '@/form-schema/logInFormSchema';
-import { getDashboardPagePath } from '@/utils/getPagePaths';
+import { getDashboardPagePath, getsignupPagePath } from '@/utils/getPagePaths';
 import { LoadingButton } from '@/components/LoadingButton/LoadingButton';
 import { FormField } from '@/components/FormField/FormField';
 
@@ -63,8 +63,18 @@ const LoginForm = () => {
             </div>
           )}
 
-          <FormField label="Email Address" type="text" name="email" isRequired={true} />
-          <FormField label="Password" type="password" name="password" isRequired={true}  />
+          <FormField
+            label="Email Address"
+            type="email"
+            name="email"
+            isRequired={true}
+          />
+          <FormField
+            label="Password"
+            type="password"
+            name="password"
+            isRequired={true}
+          />
 
           {/* Submit Action Button */}
           <LoadingButton
@@ -92,6 +102,18 @@ const LoginForm = () => {
           </div>
         </form>
       </FormProvider>
+      <div className="mt-7 text-center">
+        <p className="text-sm text-(--text-secondary)">
+          Don't have a account&nbsp;?&nbsp;&nbsp;
+          <Link
+            to={getsignupPagePath()}
+            className="text-indigo-500 hover:text-indigo-400
+              font-semibold transition-colors cursor-pointer"
+          >
+            Sign Up
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
