@@ -14,8 +14,8 @@ import { getLoginPagePath } from '@/utils/getPagePaths';
 export default function SignUpPage() {
   const [isSigningUp, setIsSigningUp] = useState(false);
   const [profilePreview, setProfilePreview] = useState<{
-    profilePreviewURL:string;
-    imageFile:File;
+    profilePreviewURL: string;
+    imageFile: File;
   } | null>(null);
 
   const formMethods = useForm<SignUpFormData>({
@@ -28,15 +28,14 @@ export default function SignUpPage() {
     },
   });
 
-
   const handleProfileChange = async (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const files = e.target.files?.[0];
     if (!files) return;
     setProfilePreview({
-        profilePreviewURL:URL.createObjectURL(files),
-        imageFile:files
+      profilePreviewURL: URL.createObjectURL(files),
+      imageFile: files,
     });
   };
 
@@ -76,7 +75,6 @@ export default function SignUpPage() {
 
       // API call here
       // await signup(formData);
-      
     } catch (error) {
       console.log(error);
     } finally {
@@ -88,10 +86,10 @@ export default function SignUpPage() {
     <div className="min-h-screen w-full flex items-center justify-center p-4 bg-(--bg-primary)">
       <div
         className="w-full max-w-md rounded-3xl border border-(--border-color)
-        bg-(--bg-secondary) shadow-2xl shadow-black/5 p-8"
+        bg-(--bg-secondary) shadow-2xl shadow-black/5 lg:p-6 p-4"
       >
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-4">
           <h1 className="text-3xl font-extrabold tracking-tight text-(--text-primary)">
             Create Account
           </h1>
@@ -99,10 +97,22 @@ export default function SignUpPage() {
           <p className="mt-2 text-sm text-(--text-secondary)">
             Join your workspace and start collaborating
           </p>
+          <div className="mt-2 text-center">
+            <p className="text-sm text-(--text-secondary)">
+              Already have an account&nbsp;?&nbsp;&nbsp;
+              <Link
+                to={getLoginPagePath()}
+                className="text-indigo-500 hover:text-indigo-400
+              font-semibold transition-colors cursor-pointer "
+              >
+                Log In
+              </Link>
+            </p>
+          </div>
         </div>
 
         {/* Profile Upload */}
-        <div className="flex flex-col items-center mb-7">
+        <div className="flex flex-col items-center mb-4">
           <div className="relative group">
             <div
               className="w-28 h-28 rounded-full overflow-hidden
@@ -147,14 +157,13 @@ export default function SignUpPage() {
           <p className="mt-3 text-xs text-(--text-secondary)">
             Upload profile picture
           </p>
-      
         </div>
 
         {/* Form */}
         <FormProvider {...formMethods}>
           <form
             onSubmit={formMethods.handleSubmit(onSubmit)}
-            className="space-y-4"
+            className="space-y-3.5"
             noValidate
           >
             <FormField
@@ -189,26 +198,12 @@ export default function SignUpPage() {
               type="submit"
               isLoading={isSigningUp}
               loadingText="Creating account..."
-              className="mt-2"
+              className="mt-1"
             >
               Create Account
             </LoadingButton>
           </form>
         </FormProvider>
-
-        {/* Footer */}
-        <div className="mt-7 text-center">
-          <p className="text-sm text-(--text-secondary)">
-            Already have an account&nbsp;?&nbsp;&nbsp;
-            <Link
-              to={getLoginPagePath()}
-              className="text-indigo-500 hover:text-indigo-400
-              font-semibold transition-colors cursor-pointer"
-            >
-              Log In
-            </Link>
-          </p>
-        </div>
       </div>
     </div>
   );

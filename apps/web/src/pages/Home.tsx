@@ -4,6 +4,7 @@ import dashBoardDesktopLightImg from '@/assets/images/dashboard-desktop-light.pn
 import dashBoardMobileLightImg from '@/assets/images/dashboard-mobile-light.png';
 import { useTheme } from '@/hooks/useTheme';
 import { Link } from 'react-router-dom';
+import { getLoginPagePath, getsignupPagePath } from '@/utils/getPagePaths';
 
 const DashboardScreenShotImg = () => {
   const { theme } = useTheme();
@@ -31,7 +32,7 @@ const DashboardScreenShotImg = () => {
 
 const HeroSection = () => {
   return (
-    <header className="relative max-w-7xl mx-auto px-6 pt-24 pb-20 text-center flex flex-col items-center">
+    <header className="relative max-w-7xl mx-auto px-6 lg:pt-24 pt-6 pb-20 text-center flex flex-col items-center">
       {/* Subtle Background Glow - adapts color saturation based on theme */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-125 h-125 bg-indigo-500/10 dark:bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -41,7 +42,7 @@ const HeroSection = () => {
       </span>
 
       {/* Main Headline */}
-      <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight max-w-4xl leading-tight bg-linear-to-b from-(--text-primary) to-(--text-secondary) bg-clip-text text-transparent">
+      <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight max-w-4xl leading-tight bg-linear-to-b from-(--text-primary) to-(--text-secondary) bg-clip-text text-transparent">
         Move fast. Stay aligned. Build better products.
       </h1>
 
@@ -54,14 +55,18 @@ const HeroSection = () => {
       {/* Hero Actions */}
       <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto">
         <Link
-          to={'/login'}
-          className="self-center w-full sm:w-auto px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-indigo-600/20 transition-all active:scale-[0.98] cursor-pointer"
+          to={getLoginPagePath()}
+          className="self-center w-full sm:w-auto px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-indigo-600/20 transition-all active:scale-[0.98] cursor-pointer"
         >
           Log in
         </Link>
-        <button className="self-center w-full sm:w-auto px-8 py-4 bg-(--bg-secondary) hover:opacity-90 text-(--text-primary) font-semibold rounded-xl border border-(--border-color) transition-all cursor-pointer">
+         <Link
+          to={getsignupPagePath()}
+          className="self-center border border-(--border-color) w-full sm:w-auto px-8 py-4 bg-(--bg-secondary) text-(--text-primary) font-semibold rounded-xl shadow-lg hover:shadow-indigo-600/20 transition-all active:scale-[0.98] cursor-pointer"
+        >
           Sign up
-        </button>
+        </Link>
+      
       </div>
 
       {/* App Preview Mockup */}

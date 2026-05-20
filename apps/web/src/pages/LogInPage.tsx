@@ -38,7 +38,7 @@ const LoginForm = () => {
     }
   };
   return (
-    <div className="w-full max-w-md p-8 rounded-2xl border border-(--border-color) bg-(--bg-secondary) shadow-xl transition-all duration-300 mx-auto lg:my-8 my-2">
+    <div className="w-full max-w-md lg:p-8 p-4 rounded-2xl border border-(--border-color) bg-(--bg-secondary) shadow-xl transition-all duration-300 mx-auto lg:my-8 my-2">
       {/* Header */}
       <div className="text-center mb-8">
         <h2 className="text-3xl font-extrabold tracking-tight text-(--text-primary)">
