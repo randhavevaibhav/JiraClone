@@ -19,7 +19,11 @@ export interface AuthContextType {
   user: User | null | undefined;
   loading: boolean;
   isLoggingIn: boolean;
+  isSigningUp:boolean;
   // Change return type here to match what your component might need, or keep it returning User
   login: (credentials: LoginCredentials) => Promise<LoginResponse>;
   logout: () => Promise<void>;
+   signup: (
+    data: FormData,
+  ) => Promise<LoginResponse>;
 }

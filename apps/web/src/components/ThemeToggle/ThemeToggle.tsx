@@ -10,7 +10,7 @@ export const ThemeToggle = () => {
         toggleTheme()
       }}
       className="
-            rounded-xl bg-(--card-bg) p-3 cursor-pointer"
+            rounded-xl p-3 cursor-pointer"
       type="button"
     >
       {theme === 'light' ? (

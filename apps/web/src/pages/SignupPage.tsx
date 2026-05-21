@@ -10,6 +10,7 @@ import {
 } from '@/form-schema/signupFormSchema';
 import { Link } from 'react-router-dom';
 import { getLoginPagePath } from '@/utils/getPagePaths';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function SignUpPage() {
   const [isSigningUp, setIsSigningUp] = useState(false);
@@ -17,11 +18,12 @@ export default function SignUpPage() {
     profilePreviewURL: string;
     imageFile: File;
   } | null>(null);
+  const {signup} = useAuth()
 
   const formMethods = useForm<SignUpFormData>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
-      fullName: '',
+      name: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -62,19 +64,16 @@ export default function SignUpPage() {
       // Example FormData for backend upload
       const formData = new FormData();
 
-      formData.append('fullName', data.fullName);
+      formData.append('name', data.name);
       formData.append('email', data.email);
       formData.append('password', data.password);
 
       if (uploadedFile) {
-        formData.append('profileImage', uploadedFile);
+        formData.append('avatar', uploadedFile);
       }
 
-      // fake api delay
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
       // API call here
-      // await signup(formData);
+      await signup(formData);
     } catch (error) {
       console.log(error);
     } finally {
@@ -169,7 +168,7 @@ export default function SignUpPage() {
             <FormField
               label="Full Name"
               type="text"
-              name="fullName"
+              name="name"
               isRequired
             />
 
