@@ -1,14 +1,14 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
-    "dev": {
-      "cache": false,
-      "persistent": true
-    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"],
       "env": ["DATABASE_URL","DIRECT_URL","ENV"]
+    },
+     "dev": {
+      "cache": false,
+      "persistent": true
     },
      "db:push": {
       "env": ["DATABASE_URL","DIRECT_URL","ENV"],

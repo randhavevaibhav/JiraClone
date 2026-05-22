@@ -10,7 +10,7 @@
 
     "skipLibCheck": true,
 
-    "types": ["node"],
+    "declaration": true,
 
     "rootDir": "./src",
 
