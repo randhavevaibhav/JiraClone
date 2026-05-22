@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { checkDatabaseHealth } from '@/controllers/db.health.controller';
-import { asyncHandler } from '@/middlewares/async-handler';
+import { checkDatabaseHealth } from '../controllers/db.health.controller';
+import { asyncHandler } from '../middlewares/async-handler';
 
 const router = Router();
 /**
