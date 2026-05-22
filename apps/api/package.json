@@ -2,11 +2,11 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-    "main": "src/server.ts",
+  "main": "src/server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch -r tsconfig-paths/register src/server.ts",
-    "build": "tsc"
+     "build": "tsc && tsc-alias"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +28,7 @@
     "@types/node": "^24.12.3",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
+    "tsc-alias": "^1.8.17",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.22.1",
     "typescript": "~6.0.2"
