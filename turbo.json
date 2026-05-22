@@ -8,6 +8,10 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
+    },
+     "db:push": {
+      "env": ["DATABASE_URL","DIRECT_URL"],
+      "cache": false
     }
   }
 }

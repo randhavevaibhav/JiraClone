@@ -1,0 +1,7 @@
+import { sql } from 'drizzle-orm';
+
+import { db } from './client';
+
+export async function checkDbConnection() {
+  return db.execute(sql`SELECT NOW()`);
+}
