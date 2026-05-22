@@ -2,9 +2,15 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import healthRoutes from "@/routes/health.routes"
 import { errorMiddleware } from "@/middlewares/erros.middleware";
+import { API_PORT } from "@/utils/constants";
+import { config } from "./utils/config";
+import swaggerUi from 'swagger-ui-express';
+import './docs/paths/health';
+import { generateOpenAPIDocument } from "@/swagger/swagger";
+
 
 const app = express();
-const PORT = 8080;
+
 
 app.get("/",(_,res)=>{
     res.send({
@@ -12,16 +18,24 @@ app.get("/",(_,res)=>{
     })
 });
 
+
+app.use(
+  '/docs',
+  swaggerUi.serve,
+  swaggerUi.setup(
+    generateOpenAPIDocument(),
+  ),
+);
+
 app.use(cookieParser());
 app.use(express.json());
 app.use('/health', healthRoutes);
 
 
-
 //keep the error middleware last
 app.use(errorMiddleware);
 
-app.listen(PORT,()=>{
-console.log(`API started on PORT: ${PORT}`);
-console.log(`Local: http://localhost:${PORT}`)
+app.listen(API_PORT,()=>{
+console.log(`API started on PORT: ${API_PORT}`);
+console.log(`URL: ${config.API_URL}`)
 })
