@@ -1,36 +1,25 @@
 import express from "express";
 import cookieParser from "cookie-parser";
-import { checkDbConnection } from '@packages/db';
+import healthRoutes from "@/routes/health.routes"
+import { errorMiddleware } from "@/middlewares/erros.middleware";
 
 const app = express();
 const PORT = 8080;
 
-app.use(cookieParser());
-app.use(express.json());
-
-app.get("/",(req,res)=>{
+app.get("/",(_,res)=>{
     res.send({
         message:"Home page"
     })
 });
 
-app.get('/health/db', async (_req, res) => {
-  try {
-     await checkDbConnection();
+app.use(cookieParser());
+app.use(express.json());
+app.use('/health', healthRoutes);
 
-    res.json({
-      success: true,
-      message: 'Database connected successfully',
-    });
-  } catch (error) {
-    console.error(error);
 
-    res.status(500).json({
-      success: false,
-      message: 'Database connection failed',
-    });
-  }
-});
+
+//keep the error middleware last
+app.use(errorMiddleware);
 
 app.listen(PORT,()=>{
 console.log(`API started on PORT: ${PORT}`);
