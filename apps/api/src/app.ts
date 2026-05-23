@@ -8,6 +8,7 @@ import { generateOpenAPIDocument } from "./swagger/swagger";
 
 const app = express();
 
+
 app.get("/",(_,res)=>{
     res.send({
         message:"Home page"
