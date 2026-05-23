@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { checkDbConnection } from '@packages/db';
+import { checkDbConnection } from '../db/index';
 
 export async function checkDatabaseHealth(
   _req: Request,
