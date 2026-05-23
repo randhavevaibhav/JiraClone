@@ -1,15 +1,14 @@
 {
-    "builds":[
-        {
-            "src":"dist/server.js",
-            "use":"@vercel/node"
-        }
-    ],
-    "routes":[
-        {
-            "src":"/(.*)",
-             "dest": "apps/api/api/index.ts"
-        }
-    ],
-     "outputDirectory": "dist"
+  "functions": {
+    "apps/api/api/index.ts": {
+      "runtime": "@vercel/node@5.3.24"
+    }
+  },
+
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "apps/api/api/index.ts"
+    }
+  ]
 }
