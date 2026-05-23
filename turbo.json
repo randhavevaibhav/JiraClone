@@ -4,14 +4,14 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"],
-      "env": ["DATABASE_URL","DIRECT_URL","ENV"]
+      "env": ["DATABASE_URL","DIRECT_URL","ENV","API_URL"]
     },
      "dev": {
       "cache": false,
       "persistent": true
     },
      "db:push": {
-      "env": ["DATABASE_URL","DIRECT_URL","ENV"],
+      "env": ["DATABASE_URL","DIRECT_URL","ENV","API_URL"],
       "cache": false
     }
   }
