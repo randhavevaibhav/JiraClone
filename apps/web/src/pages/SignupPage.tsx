@@ -18,8 +18,8 @@ export default function SignUpPage() {
     profilePreviewURL: string;
     imageFile: File;
   } | null>(null);
-  const {signup} = useAuth()
-
+  const {signup} = useAuth();
+  
   const formMethods = useForm<SignUpFormData>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
@@ -75,7 +75,7 @@ export default function SignUpPage() {
       // API call here
       await signup(formData);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsSigningUp(false);
     }

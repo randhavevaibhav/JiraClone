@@ -11,7 +11,7 @@ export default function UnAuthLayout() {
        </Link>
         <ThemeToggle />
       </div>
-      <div className='my-10'></div>
+      <div className='my-10'/>
       <Outlet />
     </div>
   );
