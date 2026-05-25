@@ -9,8 +9,14 @@ type LoadingButtonProps = {
 
 export const LoadingButton = forwardRef<HTMLButtonElement, LoadingButtonProps>(
   (props: LoadingButtonProps, ref) => {
-    const { children, className="", isLoading=false, loadingText="Loading...", disabled, ...rest } =
-      props;
+    const {
+      children,
+      className = '',
+      isLoading = false,
+      loadingText = 'Loading...',
+      disabled,
+      ...rest
+    } = props;
     return (
       <button
         className={cn(
@@ -26,7 +32,7 @@ export const LoadingButton = forwardRef<HTMLButtonElement, LoadingButtonProps>(
         {isLoading ? (
           <>
             <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-            <span className='min-w-20 text-center'>{loadingText}</span>
+            <span className="min-w-20 text-center">{loadingText}</span>
           </>
         ) : (
           children

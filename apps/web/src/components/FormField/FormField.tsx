@@ -9,16 +9,16 @@ import { Eye, EyeOff } from 'lucide-react';
 type FormFieldProps = {
   label: string;
   name: string;
-  type: 'number' | 'checkbox' | 'text' | 'password'| 'email';
+  type: 'number' | 'checkbox' | 'text' | 'password' | 'email';
   isRequired?: boolean;
-  placeholder?:string;
+  placeholder?: string;
 };
 export const FormField = ({
   label,
   name,
   type = 'text',
   isRequired = false,
-  placeholder=""
+  placeholder = '',
 }: FormFieldProps) => {
   const {
     register,
@@ -31,7 +31,7 @@ export const FormField = ({
       ? errors[name].message
       : undefined;
   const isPassword = type === 'password';
-  
+
   return (
     <div className="flex flex-col space-y-1.5 relative mt-1">
       <Label htmlFor={name} className="capitalize" isRequired={isRequired}>
@@ -41,7 +41,7 @@ export const FormField = ({
       <Input
         id={name}
         type={isPassword ? (showPass ? 'text' : 'password') : type}
-        placeholder={isPassword?"••••••••":placeholder}
+        placeholder={isPassword ? '••••••••' : placeholder}
         {...register(name)}
         className={cn(
           {

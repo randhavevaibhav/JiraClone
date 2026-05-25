@@ -1,4 +1,4 @@
-import  { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { User, Settings, LogOut } from 'lucide-react'; // Import Lucide components
@@ -15,11 +15,13 @@ export const UserDropdown = ({ isOpen, onClose }: UserDropdownProps) => {
 
   // Close the modal cleanly if the user clicks anywhere outside of it or
   //other than user avatar
-   useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       const clickedInsideDropdown = dropdownRef.current?.contains(target);
-      const clickedAvatarTrigger = target.closest('#user-avatar-trigger-button');
+      const clickedAvatarTrigger = target.closest(
+        '#user-avatar-trigger-button',
+      );
       if (isOpen && !clickedInsideDropdown && !clickedAvatarTrigger) {
         onClose();
       }
@@ -49,23 +51,29 @@ export const UserDropdown = ({ isOpen, onClose }: UserDropdownProps) => {
     >
       {/* User Context Quick Details (Mobile view fallback) */}
       <div className="px-3 py-2 border-b border-(--border-color)/50 md:hidden">
-        <p className="text-xs font-semibold text-(--text-primary) truncate">{user.name}</p>
-        <p className="text-[10px] text-(--text-secondary) truncate">{user.email}</p>
+        <p className="text-xs font-semibold text-(--text-primary) truncate">
+          {user.name}
+        </p>
+        <p className="text-[10px] text-(--text-secondary) truncate">
+          {user.email}
+        </p>
       </div>
 
       <div className="py-1 space-y-0.5">
         {/* Profile Item */}
-        <button 
+        <button
           onClick={() => alert('Profile settings layout under construction!')}
           className="w-full text-left px-3 py-2 text-sm text-(--text-primary) hover:bg-(--bg-primary) rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer group"
         >
           <User className="w-4 h-4 text-(--text-secondary) group-hover:text-(--text-primary) transition-colors" />
           <span>My Profile</span>
         </button>
-        
+
         {/* Settings Item */}
-        <button 
-          onClick={() => alert('Workspace dashboard configurations coming soon!')}
+        <button
+          onClick={() =>
+            alert('Workspace dashboard configurations coming soon!')
+          }
           className="w-full text-left px-3 py-2 text-sm text-(--text-primary) hover:bg-(--bg-primary) rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer group"
         >
           <Settings className="w-4 h-4 text-(--text-secondary) group-hover:text-(--text-primary) transition-colors" />

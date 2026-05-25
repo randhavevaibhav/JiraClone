@@ -18,8 +18,8 @@ export default function SignUpPage() {
     profilePreviewURL: string;
     imageFile: File;
   } | null>(null);
-  const {signup} = useAuth();
-  
+  const { signup } = useAuth();
+
   const formMethods = useForm<SignUpFormData>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
@@ -165,12 +165,7 @@ export default function SignUpPage() {
             className="space-y-3.5"
             noValidate
           >
-            <FormField
-              label="Full Name"
-              type="text"
-              name="name"
-              isRequired
-            />
+            <FormField label="Full Name" type="text" name="name" isRequired />
 
             <FormField
               label="Email Address"
