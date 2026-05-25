@@ -1,10 +1,9 @@
-import { NextFunction, Request, Response } from 'express';
+import type{ Request, Response } from 'express';
 
 export function errorMiddleware(
   error: Error,
   _req: Request,
-  res: Response,
-  _next: NextFunction,
+  res: Response
 ) {
   console.error(error);
 
