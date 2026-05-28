@@ -4,9 +4,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useAuth } from '@/hooks/useAuth';
 import { Link, useNavigate } from 'react-router-dom';
 import {
-  logInFormSchema,
-  type LogInFormFormData,
-} from '@/form-schema/logInFormSchema';
+  loginSchema,
+  type loginSchemaType,
+} from '@root/shared/schema/login.schema';
 import { getDashboardPagePath, getsignupPagePath } from '@/utils/getPagePaths';
 import { LoadingButton } from '@/components/LoadingButton/LoadingButton';
 import { FormField } from '@/components/FormField/FormField';
@@ -16,15 +16,15 @@ const LoginForm = () => {
   const [apiError, setApiError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const formMethods = useForm<LogInFormFormData>({
-    resolver: zodResolver(logInFormSchema),
+  const formMethods = useForm<loginSchemaType>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: '',
       password: '',
     },
   });
 
-  const onSubmit = async (data: LogInFormFormData) => {
+  const onSubmit = async (data: loginSchemaType) => {
     try {
       setApiError(null);
       await login({ email: data.email, password: data.password });
