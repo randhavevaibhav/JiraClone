@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import {
   loginSchema,
   type loginSchemaType,
-} from '@root/shared/schema/login.schema';
+} from '@root/apps/shared/schema/login.schema';
 import { getDashboardPagePath, getsignupPagePath } from '@/utils/getPagePaths';
 import { LoadingButton } from '@/components/LoadingButton/LoadingButton';
 import { FormField } from '@/components/FormField/FormField';

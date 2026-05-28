@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { signUpSchema } from '@root/shared/schema/signup.schema';
+import { signUpSchema } from '@root/apps/shared/schema/signup.schema';
 export const signUpFormSchema = signUpSchema
   .extend({
     confirmPassword: z.string(),
