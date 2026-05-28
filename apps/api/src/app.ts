@@ -1,6 +1,6 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
-import healthRoutes from './modules/health/health.routes';
+import healthRoutes from '@/modules/health/health.routes';
 import { errorMiddleware } from './middlewares/erros.middleware';
 import { notFoundMiddleware } from './middlewares/not.found.middleware';
 import swaggerUi from 'swagger-ui-express';
