@@ -1,3 +1,4 @@
+import 'tsconfig-paths/register';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import healthRoutes from '@/modules/health/health.routes';
