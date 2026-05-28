@@ -10,5 +10,6 @@
       "src": "/(.*)",
       "dest": "apps/api/api/index.ts"
     }
-  ]
+  ],
+  "buildCommand": "pnpm build"
 }
