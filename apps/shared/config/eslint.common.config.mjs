@@ -21,6 +21,14 @@ export const configArr = [
       // Extra spaces
       'no-multi-spaces': 'error',
 
+      //un-used vars
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+        },
+      ],
+
       // Require spaces around operators
       'space-infix-ops': 'error',
 

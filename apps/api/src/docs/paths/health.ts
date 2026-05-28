@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { registry } from '../../swagger/swagger';
+import { registry } from '@/swagger/swagger';
 
 registry.registerPath({
   method: 'get',
@@ -13,8 +13,7 @@ registry.registerPath({
 
   responses: {
     200: {
-      description:
-        'Database connected successfully',
+      description: 'Database connected successfully',
 
       content: {
         'application/json': {
