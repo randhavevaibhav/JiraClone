@@ -1,11 +1,8 @@
 import { Request, Response } from 'express';
 
-import { checkDbConnection } from '../db/index';
+import { checkDbConnection } from './health.services';
 
-export async function checkDatabaseHealth(
-  _req: Request,
-  res: Response,
-) {
+export async function checkDatabaseHealth(_req: Request, res: Response) {
   await checkDbConnection();
 
   res.json({
