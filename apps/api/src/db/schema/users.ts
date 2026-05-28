@@ -1,17 +1,12 @@
-import {
-  boolean,
-  pgEnum,
-  pgTable,
-  text,
-  timestamp,
-  uuid,
-} from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 
-const userRoleEnum = pgEnum('user_role', [
-  'member',
-  'admin',
-  'owner',
-]);
+export const USER_ROLES = {
+  MEMBER: 'member',
+  ADMIN: 'admin',
+  OWNER: 'owner',
+} as const;
+
+export type UserRole = (typeof USER_ROLES)[keyof typeof USER_ROLES];
 
 export const users = pgTable('users', {
   id: uuid('id').defaultRandom().primaryKey(),
@@ -24,19 +19,9 @@ export const users = pgTable('users', {
 
   avatarUrl: text('avatar_url'),
 
-  isEmailVerified: boolean('is_email_verified')
-    .notNull()
-    .default(false),
+  role: text('role').$type<UserRole>().notNull().default(USER_ROLES.MEMBER),
 
-  role: userRoleEnum('role')
-    .notNull()
-    .default('member'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
 
-  createdAt: timestamp('created_at')
-    .defaultNow()
-    .notNull(),
-
-  updatedAt: timestamp('updated_at')
-    .defaultNow()
-    .notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });

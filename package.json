@@ -9,7 +9,8 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "build": "turbo run build",
-    "db:push": "dotenv -e apps/api/.env -- turbo run db:push"
+    "db:push": "turbo run db:push",
+    "db:studio": "turbo run db:studio"
   },
   "keywords": [],
   "author": "",

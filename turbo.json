@@ -4,18 +4,22 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"],
-      "env": ["DATABASE_URL","DIRECT_URL","ENV","API_URL"]
+      "env": ["DATABASE_URL", "DIRECT_URL", "ENV", "API_URL"]
     },
-     "dev": {
+    "dev": {
       "cache": false,
       "persistent": true
     },
-     "db:push": {
-      "env": ["DATABASE_URL","DIRECT_URL","ENV","API_URL"],
+    "db:push": {
+      "env": ["DATABASE_URL", "DIRECT_URL", "ENV", "API_URL"],
       "cache": false
     },
-    "lint":{
-       "cache": false
+    "db:studio": {
+      "env": ["DATABASE_URL", "DIRECT_URL", "ENV", "API_URL"],
+      "cache": false
+    },
+    "lint": {
+      "cache": false
     }
   }
 }
