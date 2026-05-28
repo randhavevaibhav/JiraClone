@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { registry } from '@/swagger/swagger';
+import { registry } from '../../swagger/swagger';
 
 registry.registerPath({
   method: 'get',

@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import { eq } from 'drizzle-orm';
-import { db, users } from '@/db/index';
-import { SignUpSchemaType } from '@shared/schema/signup.schema';
+import { db, users } from '../../db/index';
+import { SignUpSchemaType } from '../../../../shared/schema/signup.schema';
 
 type ExtendedSignUpSchemaType = SignUpSchemaType & {
   avatarUrl?: string;

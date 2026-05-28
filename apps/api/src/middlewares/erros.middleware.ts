@@ -1,4 +1,4 @@
-import { AppError } from '@/utils/app-error';
+import { AppError } from '../utils/app-error';
 import type { NextFunction, Request, Response } from 'express';
 
 export function errorMiddleware(
