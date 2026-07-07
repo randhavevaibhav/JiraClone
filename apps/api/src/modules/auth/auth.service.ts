@@ -3,7 +3,7 @@ import { eq } from 'drizzle-orm';
 import { db, users } from '../../db/index';
 import { SignUpSchemaType } from '../../../../shared/schema/signup.schema';
 
-type ExtendedSignUpSchemaType = SignUpSchemaType & {
+export type ExtendedSignUpSchemaType = SignUpSchemaType & {
   avatarUrl?: string;
 };
 

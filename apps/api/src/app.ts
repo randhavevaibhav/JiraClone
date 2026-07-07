@@ -1,11 +1,13 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
-import healthRoutes from './modules/health/health.routes';
 import { errorMiddleware } from './middlewares/erros.middleware';
 import { notFoundMiddleware } from './middlewares/not.found.middleware';
 import swaggerUi from 'swagger-ui-express';
 import './docs/paths/health';
 import { generateOpenAPIDocument } from './swagger/swagger';
+
+import healthRoutes from './modules/health/health.routes';
+import authRoutes from './modules/auth/auth.routes';
 
 const app = express();
 
@@ -20,7 +22,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(generateOpenAPIDocument()));
 app.use(cookieParser());
 app.use(express.json());
 app.use('/health', healthRoutes);
-
+app.use('/auth', authRoutes);
 //404 Not found middleware
 app.use(notFoundMiddleware);
 //keep the error middleware last
