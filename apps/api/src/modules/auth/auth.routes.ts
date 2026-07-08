@@ -1,7 +1,7 @@
-import { zodValidate } from '../../middlewares/validate.middleware';
+import { zodValidate } from '../../middlewares/zod.validate.middleware';
 import { Router } from 'express';
 import { signUpSchema } from '../../../../shared/schema/signup.schema';
-import { signupController } from './auth.controller';
+import { signupController } from './auth.controllers';
 
 const router = Router();
 

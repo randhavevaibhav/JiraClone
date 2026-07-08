@@ -21,6 +21,8 @@ export const users = pgTable('users', {
 
   role: text('role').$type<UserRole>().notNull().default(USER_ROLES.MEMBER),
 
+  refreshToken: text('refreshToken').unique(),
+
   createdAt: timestamp('created_at').defaultNow().notNull(),
 
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
