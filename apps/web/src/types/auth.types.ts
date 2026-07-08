@@ -2,7 +2,7 @@ export type User = {
   id: string;
   name: string;
   email: string;
-  avatar: string;
+  avatar?: string;
 };
 
 export type LoginCredentials = {
@@ -10,20 +10,19 @@ export type LoginCredentials = {
   password: string;
 };
 
-export interface LoginResponse {
+export interface Auth {
   user: User;
-  token: string;
+  accessToken: string;
 }
 
-export interface AuthContextType {
-  user: User | null | undefined;
-  loading: boolean;
-  isLoggingIn: boolean;
-  isSigningUp:boolean;
-  // Change return type here to match what your component might need, or keep it returning User
-  login: (credentials: LoginCredentials) => Promise<LoginResponse>;
+export interface AuthServiceType {
+  login: (credentials: LoginCredentials) => Promise<Auth>;
   logout: () => Promise<void>;
-   signup: (
-    data: FormData,
-  ) => Promise<LoginResponse>;
+  signup: (data: FormData) => Promise<void>;
+}
+
+export interface AuthContextType extends AuthServiceType {
+  auth: Auth | null | undefined;
+  isLoginpending: boolean;
+  isSignupPending: boolean;
 }

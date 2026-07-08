@@ -1,4 +1,4 @@
-import type { User } from '@/types/auth.types';
+import type { AuthServiceType, User } from '@/types/auth.types';
 
 const MOCK_USER: User = {
   id: 'usr_01J',
@@ -7,9 +7,9 @@ const MOCK_USER: User = {
   avatar: 'https://api.dicebear.com/9.x/big-smile/svg?seed=Luna',
 };
 
-export const authService = {
+export const authService: AuthServiceType = {
   // Mock login
-  login: async (email: string, password: string) => {
+  login: async ({ email, password }) => {
     // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 800));
 
@@ -17,35 +17,16 @@ export const authService = {
       const mockToken = 'mock-jwt-token-xyz-123';
       localStorage.setItem('token', mockToken);
       localStorage.setItem('user', JSON.stringify(MOCK_USER));
-      return { user: MOCK_USER, token: mockToken };
+      return { user: MOCK_USER, accessToken: mockToken };
     }
     throw new Error('Invalid email or password. Use demo@test.com / password');
   },
 
   // Mock signup
   signup: async (formData: FormData) => {
+    //API call pass the formData
     await new Promise((resolve) => setTimeout(resolve, 800));
-
-    //doing formData.get for now after API enable pass the formData directly 
-    const newUser = {
-      id: Math.random().toString(),
-      name: formData.get('name') as string,
-      email: formData.get('email') as string,
-      avatar: formData.get('avatar') as string,
-      password:formData.get("password") as string
-    };
-    //temp storing data in local storage for now
-    localStorage.setItem('token', 'mock-jwt-token-new');
-    localStorage.setItem('user', JSON.stringify(newUser));
-    return { user: newUser, token: 'mock-jwt-token-new' };
-  },
-
-  // Mock getting current logged in user session on refresh
-  getCurrentUser: async () => {
-    const token = localStorage.getItem('token');
-    const user = localStorage.getItem('user');
-    if (!token || !user) return null;
-    return JSON.parse(user);
+    console.log(formData);
   },
 
   // Mock logout

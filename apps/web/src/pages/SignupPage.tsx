@@ -8,7 +8,7 @@ import {
   type SignUpFormData,
   signUpFormSchema,
 } from '@/form-schema/signupFormSchema';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getLoginPagePath } from '@/utils/getPagePaths';
 import { useAuth } from '@/hooks/useAuth';
 
@@ -19,6 +19,7 @@ export default function SignUpPage() {
     imageFile: File;
   } | null>(null);
   const { signup } = useAuth();
+  const navigate = useNavigate();
 
   const formMethods = useForm<SignUpFormData>({
     resolver: zodResolver(signUpFormSchema),
@@ -74,6 +75,8 @@ export default function SignUpPage() {
 
       // API call here
       await signup(formData);
+      // All went well navigate to login
+      navigate(getLoginPagePath());
     } catch (error) {
       console.error(error);
     } finally {
