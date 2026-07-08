@@ -9,7 +9,7 @@ interface UserDropdownProps {
 }
 
 export const UserDropdown = ({ isOpen, onClose }: UserDropdownProps) => {
-  const { logout, user } = useAuth();
+  const { logout, auth } = useAuth();
   const navigate = useNavigate();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +32,9 @@ export const UserDropdown = ({ isOpen, onClose }: UserDropdownProps) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen, onClose]);
 
-  if (!isOpen || !user) return null;
+  if (!isOpen || !auth) return null;
+
+  const { user } = auth;
 
   const handleLogoutClick = async () => {
     try {

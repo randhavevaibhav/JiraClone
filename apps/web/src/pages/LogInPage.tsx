@@ -12,7 +12,7 @@ import { LoadingButton } from '@/components/LoadingButton/LoadingButton';
 import { FormField } from '@/components/FormField/FormField';
 
 const LoginForm = () => {
-  const { login, isLoggingIn } = useAuth();
+  const { login, isLoginpending } = useAuth();
   const [apiError, setApiError] = useState<string | null>(null);
   const navigate = useNavigate();
 
@@ -78,10 +78,10 @@ const LoginForm = () => {
 
           {/* Submit Action Button */}
           <LoadingButton
-            disabled={isLoggingIn}
+            disabled={isLoginpending}
             type="submit"
             loadingText="Logging you in..."
-            isLoading={isLoggingIn}
+            isLoading={isLoginpending}
           >
             Log In
           </LoadingButton>

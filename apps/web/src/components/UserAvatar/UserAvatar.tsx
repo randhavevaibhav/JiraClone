@@ -10,12 +10,12 @@ const getInitials = (name: string | undefined | null): string => {
 };
 
 export const UserAvatar = () => {
-  const { user } = useAuth();
+  const { auth } = useAuth();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
-  if (!user) return null; // Or render skeleton loader block
-
+  if (!auth) return null; // Or render skeleton loader block
+  const { user } = auth;
   const initials = getInitials(user.name);
 
   return (
