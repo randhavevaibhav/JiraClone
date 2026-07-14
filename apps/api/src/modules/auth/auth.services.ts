@@ -1,5 +1,9 @@
 import bcrypt from 'bcrypt';
-import type { ExtendedSignUpSchemaType, loginSchemaType } from './auth.types';
+import type {
+  ExtendedSignUpSchemaType,
+  loginSchemaType,
+  UserInfo,
+} from './auth.types';
 import jwt from 'jsonwebtoken';
 import { userRepository } from '../../repository/user.repository';
 import {
@@ -54,12 +58,14 @@ export const loginUser = async (credentials: loginSchemaType) => {
     }
   }
 
-  const userInfo = {
-    userId: user.id,
-    userAvatar: user.avatarUrl,
-    userEmail: user.email,
-    userRole: user.role,
-    userCreatedAt: user.createdAt,
+  const userInfo: UserInfo = {
+    id: user.id,
+    fullName: user.fullName,
+    avatarUrl: user.avatarUrl,
+    email: user.email,
+    role: user.role,
+    createdAt: user.createdAt,
+    updatedAt: user.updatedAt,
   };
 
   const accessToken = jwt.sign(

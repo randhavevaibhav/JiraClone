@@ -1,6 +1,12 @@
 import { Request, Response } from 'express';
 import { loginUser, signupUser } from './auth.services';
-import { ExtendedSignUpSchemaType, loginSchemaType } from './auth.types';
+import {
+  ExtendedSignUpSchemaType,
+  LoginResponseType,
+  loginSchemaType,
+  SignupResponseType,
+} from './auth.types';
+import { Success } from '@/types/api-response';
 
 export const signupController = async (
   req: Request<object, object, ExtendedSignUpSchemaType>,
@@ -10,10 +16,14 @@ export const signupController = async (
 
   const user = await signupUser(signupUserData);
 
-  res.json({
+  const response: Success<SignupResponseType> = {
     success: true,
-    message: `signup completed for user ${user.fullName} !`,
-  });
+    message: `signup completed !`,
+    data: {
+      email: user.email,
+    },
+  };
+  res.status(200).send(response);
 };
 
 export const loginController = async (
@@ -30,9 +40,14 @@ export const loginController = async (
     sameSite: 'none',
     secure: true,
   });
-  return res.status(200).send({
-    message: `user with mail: ${credentials.email} validated !!!`,
-    userInfo,
-    accessToken,
-  });
+
+  const response: Success<LoginResponseType> = {
+    success: true,
+    message: `user validated !`,
+    data: {
+      userInfo,
+      accessToken,
+    },
+  };
+  return res.status(200).send(response);
 };
