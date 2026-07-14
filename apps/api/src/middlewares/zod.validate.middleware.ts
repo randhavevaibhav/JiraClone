@@ -1,4 +1,4 @@
-import { BadRequestError } from '@/utils/errors/bad-request-error';
+import { BadRequestError } from '../errors/errors';
 import { Request, Response, NextFunction } from 'express';
 import { z, ZodType } from 'zod';
 

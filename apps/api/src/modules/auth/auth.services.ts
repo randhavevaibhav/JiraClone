@@ -1,15 +1,12 @@
 import bcrypt from 'bcrypt';
 import type { ExtendedSignUpSchemaType, loginSchemaType } from './auth.types';
 import jwt from 'jsonwebtoken';
+import { userRepository } from '../../repository/user.repository';
 import {
-  checkIfUserExist,
-  getUserRefreshToken,
-  insertNewUser,
-  updateUserRefreshToken,
-} from './auth.dao';
-import { ConflictError } from '@/utils/errors/conflict-error';
-import { UnAuthorizedError } from '@/utils/errors/un-authorized-error';
-import { ForbiddenError } from '@/utils/errors/forbidden-error';
+  ConflictError,
+  UnAuthorizedError,
+  ForbiddenError,
+} from '../../errors/errors';
 
 const isTokenExpired = (token: string, secret: string) => {
   try {
@@ -20,19 +17,19 @@ const isTokenExpired = (token: string, secret: string) => {
 };
 
 export const signupUser = async (userData: ExtendedSignUpSchemaType) => {
-  const user = await checkIfUserExist(userData.email);
+  const user = await userRepository.checkIfUserExist(userData.email);
   if (user && user.email) {
     throw new ConflictError('Email already exists');
   }
 
   const hashedPassword = await bcrypt.hash(userData.password, 10);
-  const newUser = await insertNewUser(userData, hashedPassword);
+  const newUser = await userRepository.insert({ userData, hashedPassword });
   return newUser;
 };
 
 export const loginUser = async (credentials: loginSchemaType) => {
   const { email, password } = credentials;
-  const user = await checkIfUserExist(email);
+  const user = await userRepository.checkIfUserExist(email);
 
   if (!user) {
     throw new UnAuthorizedError('Invalid email or password');
@@ -42,7 +39,10 @@ export const loginUser = async (credentials: loginSchemaType) => {
     throw new UnAuthorizedError('Invalid email or password');
   }
 
-  const token = await getUserRefreshToken(user.id);
+  const token = await userRepository.get({
+    userId: user.id,
+    column: 'refreshToken',
+  });
 
   if (token) {
     if (
@@ -75,7 +75,11 @@ export const loginUser = async (credentials: loginSchemaType) => {
     },
   );
 
-  await updateUserRefreshToken(user.id, newRefreshToken);
+  await userRepository.update({
+    userId: user.id,
+    column: 'refreshToken',
+    value: newRefreshToken,
+  });
 
   return {
     userInfo,
