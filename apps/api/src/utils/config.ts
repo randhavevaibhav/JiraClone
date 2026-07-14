@@ -1,17 +1,19 @@
-import dotenv from "dotenv";
-import { API_PORT } from "./constants.js";
+import dotenv from 'dotenv';
+import { API_PORT } from './constants.js';
 
 dotenv.config();
 
 const environments = {
   PROD: {
+    ENV: 'production',
     DB_URL: process.env.DATABASE_URL!,
     API_URL: process.env.API_URL!,
   },
   DEV: {
+    ENV: 'development',
     DB_URL: process.env.DATABASE_URL!,
     API_URL: `http://localhost:${API_PORT}`,
-  }
+  },
 };
 
 type Environment = keyof typeof environments;
@@ -19,10 +21,7 @@ type Environment = keyof typeof environments;
 const env = process.env.ENV;
 
 if (!env || !(env in environments)) {
-  throw new Error(
-    'Invalid ENV value. Use PROD or DEV',
-  );
+  throw new Error('Invalid ENV value. Use PROD or DEV');
 }
 
-export const config =
-  environments[env as Environment];
+export const config = environments[env as Environment];
