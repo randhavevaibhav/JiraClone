@@ -1,6 +1,11 @@
 import dotenv from 'dotenv';
 const nodeEnv = process.env.NODE_ENV ?? 'dev';
 
+//## NOTE - if you want to check PROD db from local un-comment below block
+//  dotenv.config({
+//     path: `.env.${nodeEnv}`,
+//   });
+
 if (nodeEnv !== 'prod') {
   dotenv.config({
     path: `.env.${nodeEnv}`,
