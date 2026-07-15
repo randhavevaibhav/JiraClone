@@ -1,13 +1,7 @@
+import './src/utils/config';
 import { defineConfig } from 'drizzle-kit';
-import * as dotenv from 'dotenv';
-import * as path from 'path';
 
-dotenv.config({
-  path: path.resolve(__dirname, '../../apps/api/.env'),
-});
-
-const connectionString = process.env.DIRECT_URL!;
-
+const connectionString = process.env.DATABASE_URL!;
 export default defineConfig({
   out: './drizzle',
   dialect: 'postgresql',

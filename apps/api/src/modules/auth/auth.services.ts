@@ -20,7 +20,7 @@ const isTokenExpired = (token: string, secret: string) => {
   }
 };
 
-export const signupUser = async (userData: ExtendedSignUpSchemaType) => {
+const signupUser = async (userData: ExtendedSignUpSchemaType) => {
   const user = await userRepository.checkIfUserExist(userData.email);
   if (user && user.email) {
     throw new ConflictError('Email already exists');
@@ -31,7 +31,7 @@ export const signupUser = async (userData: ExtendedSignUpSchemaType) => {
   return newUser;
 };
 
-export const loginUser = async (credentials: loginSchemaType) => {
+const loginUser = async (credentials: loginSchemaType) => {
   const { email, password } = credentials;
   const user = await userRepository.checkIfUserExist(email);
 
@@ -92,4 +92,9 @@ export const loginUser = async (credentials: loginSchemaType) => {
     accessToken,
     newRefreshToken,
   };
+};
+
+export const authServices = {
+  signupUser,
+  loginUser,
 };

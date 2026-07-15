@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { loginUser, signupUser } from './auth.services';
+import { authServices } from './auth.services';
 import {
   ExtendedSignUpSchemaType,
   LoginResponseType,
@@ -14,7 +14,7 @@ export const signupController = async (
 ) => {
   const signupUserData = req.body;
 
-  const user = await signupUser(signupUserData);
+  const user = await authServices.signupUser(signupUserData);
 
   const response: Success<SignupResponseType> = {
     success: true,
@@ -32,7 +32,7 @@ export const loginController = async (
 ) => {
   const credentials = req.body;
   const { newRefreshToken, userInfo, accessToken } =
-    await loginUser(credentials);
+    await authServices.loginUser(credentials);
 
   res.cookie('jwt', newRefreshToken, {
     httpOnly: true,

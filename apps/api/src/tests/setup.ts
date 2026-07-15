@@ -1,3 +1,4 @@
+import '../utils/config';
 import { client } from '../db';
 
 afterAll(async () => {

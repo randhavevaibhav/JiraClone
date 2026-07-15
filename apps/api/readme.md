@@ -13,3 +13,7 @@ Run below commands to push changes to local or remote db
      pnpm db:migrate
      this will migrate all changes to PROD db.
      Note that sequence is very IMP first generate and then migrate otherwise cmd will FAIL.
+
+## Test
+
+for now running test on local setup only
