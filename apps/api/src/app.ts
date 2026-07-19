@@ -8,6 +8,7 @@ import { generateOpenAPIDocument } from './swagger/swagger';
 
 import healthRoutes from './modules/health/health.routes';
 import authRoutes from './modules/auth/auth.routes';
+import { invalidJson } from './middlewares/invalid-json.middleware';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(generateOpenAPIDocument()));
 
 app.use(cookieParser());
 app.use(express.json());
+app.use(invalidJson);
 app.use('/health', healthRoutes);
 app.use('/auth', authRoutes);
 //404 Not found middleware
