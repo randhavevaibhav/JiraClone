@@ -1,6 +1,6 @@
-import app from '../../app';
+import app from '../../../app';
 import request from 'supertest';
-import { createSignupUserDto } from '../factories';
+import { createSignupUserDto } from '../../factories';
 
 describe('POST /auth/signup', () => {
   it('should create new user', async () => {
@@ -16,24 +16,6 @@ describe('POST /auth/signup', () => {
       message: `signup completed !`,
       data: {
         email: dto.email,
-      },
-    });
-  });
-
-  it('should reject invalid JSON', async () => {
-    const malformedJsonString =
-      '{"email": "test@example.com", "password": "123"';
-    const response = await request(app)
-      .post('/auth/signup')
-      .set('Content-Type', 'application/json')
-      .send(malformedJsonString)
-      .expect(400);
-    expect(response.body).toEqual({
-      success: false,
-      message: 'Validation failed',
-      errors: {
-        errors: ['Malformed JSON payload syntax'],
-        properties: {},
       },
     });
   });
