@@ -16,4 +16,33 @@ Run below commands to push changes to local or remote db
 
 ## Test
 
-for now running test on local setup only
+- For now running test on local setup only.
+- For running a particular test file use
+
+```
+npm run test -- "<file path>"
+from api folder.
+```
+
+- for running a paraticular `it` or `describe` block in a test file use
+
+```
+npm run test <file path> -t "<it/decribe block statement>"
+```
+
+If you see error like
+
+```
+PostgresError: too many connections for role "test"
+```
+
+Then run below query in pgadmin
+
+```
+SELECT pg_terminate_backend(pid)
+FROM pg_stat_activity
+WHERE usename = 'test'
+  AND pid <> pg_backend_pid();
+```
+
+replace appropriate username!

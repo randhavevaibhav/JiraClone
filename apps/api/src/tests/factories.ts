@@ -1,5 +1,5 @@
 import { type ExtendedSignUpSchemaType } from '../modules/auth/auth.types';
-export const createSignupUserDto = (
+export const createUserDto = (
   overrides?: Partial<ExtendedSignUpSchemaType>,
 ): ExtendedSignUpSchemaType => {
   return {

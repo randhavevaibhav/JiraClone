@@ -12,17 +12,12 @@ import { invalidJson } from './middlewares/invalid-json.middleware';
 
 const app = express();
 
-app.get('/', (_, res) => {
-  res.send({
-    message: 'Home page',
-  });
-});
-
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(generateOpenAPIDocument()));
 
 app.use(cookieParser());
 app.use(express.json());
 app.use(invalidJson);
+// db and api health points
 app.use('/health', healthRoutes);
 app.use('/auth', authRoutes);
 //404 Not found middleware
