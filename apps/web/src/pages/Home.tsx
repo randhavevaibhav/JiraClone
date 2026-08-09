@@ -32,7 +32,7 @@ const DashboardScreenShotImg = () => {
 
 const HeroSection = () => {
   return (
-    <header className="relative max-w-7xl mx-auto px-6 lg:pt-24 pt-6 pb-20 text-center flex flex-col items-center">
+    <div className="relative max-w-7xl mx-auto px-6 lg:pt-24 pt-6 pb-20 text-center flex flex-col items-center">
       {/* Subtle Background Glow - adapts color saturation based on theme */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-125 h-125 bg-indigo-500/10 dark:bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -60,13 +60,12 @@ const HeroSection = () => {
         >
           Log in
         </Link>
-         <Link
+        <Link
           to={getsignupPagePath()}
           className="self-center border border-(--border-color) w-full sm:w-auto px-8 py-4 bg-(--bg-secondary) text-(--text-primary) font-semibold rounded-xl shadow-lg hover:shadow-indigo-600/20 transition-all active:scale-[0.98] cursor-pointer"
         >
           Sign up
         </Link>
-      
       </div>
 
       {/* App Preview Mockup */}
@@ -85,7 +84,7 @@ const HeroSection = () => {
           <DashboardScreenShotImg />
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 
@@ -182,7 +181,7 @@ const BottomCTA = () => {
 
 export default function Home() {
   return (
-    <>
+    <div className="min-h-screen font-sans antialiased overflow-x-hidden transition-colors duration-300 text-(--text-primary)">
       {/* Hero Section */}
       <HeroSection />
 
@@ -193,6 +192,6 @@ export default function Home() {
 
       {/* Bottom Call to Action Section */}
       <BottomCTA />
-    </>
+    </div>
   );
 }
