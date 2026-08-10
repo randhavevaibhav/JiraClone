@@ -11,5 +11,11 @@
       "dest": "apps/api/api/index.ts"
     }
   ],
+  "crons": [
+    {
+      "path": "/health/db",
+      "schedule": "0 12 * * 1,4"
+    }
+  ],
   "buildCommand": "pnpm build"
 }
