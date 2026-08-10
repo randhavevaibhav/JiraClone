@@ -14,10 +14,9 @@ export async function checkDatabaseHealth(_req: Request, res: Response) {
 
 // Just to check if API is runnning
 export async function checkApiHealth(req: Request, res: Response) {
-  const response: Success<string> = {
+  const response: Success = {
     success: true,
     message: 'API is started successfully',
-    data: '',
   };
   res.status(200).send(response);
 }

@@ -1,7 +1,7 @@
-export type Success<T> = {
+export type Success<T = unknown> = {
   success: true;
   message: string;
-  data: T;
+  data?: T;
 };
 
 export type Failure<E = unknown> = {

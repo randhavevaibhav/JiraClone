@@ -18,6 +18,7 @@ Run below commands to push changes to local or remote db
 
 - For now running test on local setup only.
 - For running a particular test file use
+- terminate running api for running tests as max pool size limit is 1.
 
 ```
 npm run test -- "<file path>"
