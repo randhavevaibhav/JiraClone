@@ -14,7 +14,7 @@
   "crons": [
     {
       "path": "/health/db",
-      "schedule": "0 12 * * 1,4"
+      "schedule": "0 12 * * *"
     }
   ],
   "buildCommand": "pnpm build"
